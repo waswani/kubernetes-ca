@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apache-php
+  name: apache-php
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-php
+  template:
+    metadata:
+      labels:
+        app: apache-php
+    spec:
+      containers:
+      - image: us.gcr.io/k8s-artifacts-prod/hpa-example
+        name: apache-php
+        resources:
+          requests: 
+            cpu: 500m
