@@ -1,0 +1,24 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ca-demo
+  region: us-west-2
+  version: "1.23"
+
+availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
+  
+iam:
+  withOIDC: true
+
+managedNodeGroups:
+- name: generic-workload
+  desiredCapacity: 2
+  minSize: 1
+  maxSize: 5
+  instanceType: t3.small
+  ssh:
+    enableSsm: true
+  iam:
+    withAddonPolicies:
+      autoScaler: true
