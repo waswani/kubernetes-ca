@@ -19,6 +19,3 @@ managedNodeGroups:
   instanceType: t3.small
   ssh:
     enableSsm: true
-  iam:
-    withAddonPolicies:
-      autoScaler: true
